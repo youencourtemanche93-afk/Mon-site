@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon site</title>
+  <meta name="description" content="Bienvenue sur mon site personnel : qui je suis, mes projets et comment me contacter.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a href="#accueil" class="logo">✦ Mon site</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="menu" class="nav-links">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" aria-label="Changer de thème" title="Changer de thème">
+            <span class="icon-sun">☀︎</span><span class="icon-moon">☾</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="accueil" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Bonjour, bienvenue 👋</p>
+        <h1>Je crée des choses <span class="accent">simples</span> et <span class="accent">utiles</span>.</h1>
+        <p class="lead">
+          Ceci est mon espace sur le web. Vous y trouverez qui je suis, ce que je fais
+          et les projets sur lesquels je travaille.
+        </p>
+        <div class="hero-actions">
+          <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+          <a href="#contact" class="btn btn-ghost">Me contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="apropos" class="section">
+      <div class="container about">
+        <div class="avatar" aria-hidden="true">✦</div>
+        <div>
+          <h2>À propos</h2>
+          <p>
+            Passionné·e par le numérique, j'aime transformer des idées en réalisations concrètes.
+            Curieux·se de nature, j'apprends en permanence et je prends plaisir à partager
+            ce que je découvre.
+          </p>
+          <p>
+            Remplacez ce texte par votre propre présentation : votre parcours, vos centres
+            d'intérêt, ce qui vous motive.
+          </p>
+          <ul class="tags">
+            <li>Créativité</li>
+            <li>Rigueur</li>
+            <li>Curiosité</li>
+            <li>Travail d'équipe</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section section-alt">
+      <div class="container">
+        <h2>Ce que je propose</h2>
+        <p class="section-intro">Quelques domaines dans lesquels je peux vous aider.</p>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎨</div>
+            <h3>Design</h3>
+            <p>Des interfaces claires, agréables et accessibles à tous.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💻</div>
+            <h3>Développement</h3>
+            <p>Des sites web rapides, modernes et adaptés aux mobiles.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🚀</div>
+            <h3>Accompagnement</h3>
+            <p>Des conseils pour lancer et faire grandir vos projets.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets" class="section">
+      <div class="container">
+        <h2>Projets</h2>
+        <p class="section-intro">Une sélection de réalisations récentes.</p>
+        <div class="grid">
+          <article class="project">
+            <div class="project-thumb" style="--hue: 250">01</div>
+            <div class="project-body">
+              <h3>Projet Alpha</h3>
+              <p>Une application pour organiser ses idées au quotidien.</p>
+              <a href="#" class="link">En savoir plus →</a>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-thumb" style="--hue: 170">02</div>
+            <div class="project-body">
+              <h3>Projet Bêta</h3>
+              <p>Un site vitrine pour une association locale.</p>
+              <a href="#" class="link">En savoir plus →</a>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-thumb" style="--hue: 20">03</div>
+            <div class="project-body">
+              <h3>Projet Gamma</h3>
+              <p>Un petit jeu web réalisé pendant un week-end.</p>
+              <a href="#" class="link">En savoir plus →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-alt">
+      <div class="container contact">
+        <div>
+          <h2>Contact</h2>
+          <p class="section-intro">
+            Une question, une idée, un projet ? Écrivez-moi, je réponds rapidement.
+          </p>
+        </div>
+        <form class="contact-form" novalidate>
+          <label>
+            Nom
+            <input type="text" name="nom" required autocomplete="name" placeholder="Votre nom">
+          </label>
+          <label>
+            E-mail
+            <input type="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" required placeholder="Votre message…"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="annee"></span> Mon site — Fait avec ♥</p>
+      <a href="#accueil" class="link">Retour en haut ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
