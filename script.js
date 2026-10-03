@@ -1,26 +1,11 @@
 // Année du pied de page
 document.getElementById("annee").textContent = new Date().getFullYear();
 
-// Thème clair / sombre (mémorisé dans le navigateur)
-const root = document.documentElement;
-const themeToggle = document.querySelector(".theme-toggle");
-
-function getStoredTheme() {
-  try { return localStorage.getItem("theme"); } catch { return null; }
-}
-
-function applyTheme(theme) {
-  root.dataset.theme = theme;
-  try { localStorage.setItem("theme", theme); } catch { /* stockage indisponible */ }
-}
-
-const initialTheme = getStoredTheme()
-  || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-root.dataset.theme = initialTheme;
-
-themeToggle.addEventListener("click", () => {
-  applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-});
+// En-tête opaque après défilement
+const header = document.querySelector(".site-header");
+const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 20);
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
 
 // Menu mobile
 const navToggle = document.querySelector(".nav-toggle");
@@ -32,56 +17,105 @@ function setMenu(open) {
   navLinks.classList.toggle("open", open);
 }
 
-navToggle.addEventListener("click", () => {
-  setMenu(navToggle.getAttribute("aria-expanded") !== "true");
-});
+navToggle.addEventListener("click", () => setMenu(navToggle.getAttribute("aria-expanded") !== "true"));
+navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
 
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => setMenu(false));
-});
+// Horaires (0 = dimanche … 6 = samedi), en minutes depuis minuit
+const HOURS = {
+  0: [[690, 840], [1020, 1320]],
+  1: [],
+  2: [[660, 840], [1020, 1320]],
+  3: [[660, 840], [1020, 1320]],
+  4: [[660, 840], [1020, 1320]],
+  5: [[660, 840], [1020, 1320]],
+  6: [[690, 840], [1020, 1320]],
+};
+const DAYS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 
-// Apparition des éléments au défilement
-const revealTargets = document.querySelectorAll(".section h2, .section-intro, .card, .project, .about > *, .contact-form");
+const fmt = (m) => `${String(Math.floor(m / 60)).padStart(2, "0")}h${String(m % 60).padStart(2, "0")}`;
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+// Heure actuelle à Sarlat, quel que soit le fuseau du visiteur
+function nowInParis() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Paris", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  }).formatToParts(new Date());
+  const get = (type) => parts.find((p) => p.type === type).value;
+  const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+  return { day, minutes: Number(get("hour")) * 60 + Number(get("minute")) };
+}
 
-  revealTargets.forEach((el) => {
-    el.classList.add("reveal");
-    observer.observe(el);
+function computeStatus() {
+  const { day, minutes } = nowInParis();
+
+  const current = HOURS[day].find(([open, close]) => minutes >= open && minutes < close);
+  if (current) {
+    return { open: true, day, html: `<strong>Ouvert</strong> · ferme à ${fmt(current[1])}` };
+  }
+
+  const laterToday = HOURS[day].find(([open]) => open > minutes);
+  if (laterToday) {
+    return { open: false, day, html: `<strong>Fermé</strong> · ouvre à ${fmt(laterToday[0])}` };
+  }
+
+  for (let i = 1; i <= 7; i++) {
+    const d = (day + i) % 7;
+    if (HOURS[d].length) {
+      const when = i === 1 ? "demain" : DAYS[d];
+      return { open: false, day, html: `<strong>Fermé</strong> · ouvre ${when} à ${fmt(HOURS[d][0][0])}` };
+    }
+  }
+  return { open: false, day, html: "<strong>Fermé</strong>" };
+}
+
+function renderStatus() {
+  const status = computeStatus();
+  document.querySelectorAll("[data-status]").forEach((el) => {
+    el.classList.toggle("open", status.open);
+    el.classList.toggle("closed", !status.open);
+    el.querySelector(".status-text").innerHTML = status.html;
+  });
+  document.querySelectorAll(".hours tr").forEach((row) => {
+    row.classList.toggle("today", Number(row.dataset.day) === status.day);
   });
 }
 
-// Formulaire de contact (validation côté navigateur)
-const form = document.querySelector(".contact-form");
-const status = form.querySelector(".form-status");
+renderStatus();
+setInterval(renderStatus, 60 * 1000);
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// Onglets de la carte : surligne la catégorie visible
+const tabs = [...document.querySelectorAll(".menu-tabs a")];
+const tabTargets = tabs.map((tab) => document.querySelector(tab.getAttribute("href")));
 
-  let valid = true;
-  form.querySelectorAll("input, textarea").forEach((field) => {
-    const ok = field.value.trim() !== "" && field.checkValidity();
-    field.classList.toggle("invalid", !ok);
-    if (!ok) valid = false;
+function setActiveTab(id) {
+  tabs.forEach((tab) => {
+    const active = tab.getAttribute("href") === `#${id}`;
+    tab.classList.toggle("active", active);
+    if (active) {
+      const bar = tab.parentElement;
+      bar.scrollTo({ left: tab.offsetLeft - (bar.clientWidth - tab.offsetWidth) / 2, behavior: "smooth" });
+    }
   });
+}
 
-  if (!valid) {
-    status.textContent = "Merci de remplir correctement tous les champs.";
-    status.className = "form-status error";
-    return;
-  }
+if ("IntersectionObserver" in window) {
+  const tabObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) setActiveTab(entry.target.id); });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  tabTargets.forEach((el) => el && tabObserver.observe(el));
 
-  // Aucun serveur n'est branché : on simule l'envoi.
-  // Pour recevoir les messages, reliez ce formulaire à un service comme Formspree.
-  status.textContent = "Merci ! Votre message a bien été envoyé.";
-  status.className = "form-status ok";
-  form.reset();
-});
+  // Apparition des éléments au défilement
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".section-head, .menu-card, .cta-band, .hours, .rating-card, .perks li, .access > *")
+    .forEach((el) => {
+      el.classList.add("reveal");
+      revealObserver.observe(el);
+    });
+}

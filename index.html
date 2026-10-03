@@ -3,163 +3,439 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mon site</title>
-  <meta name="description" content="Bienvenue sur mon site personnel : qui je suis, mes projets et comment me contacter.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <title>Shan Kebab — Kebab, tacos & burgers à Sarlat-la-Canéda</title>
+  <meta name="description" content="Shan Kebab à Sarlat-la-Canéda : kebabs, tacos, burgers et assiettes, sur place ou à emporter. 1 Rue Lucien Dubois. Tél. 05 53 30 43 55. Fermé le lundi.">
+  <meta name="theme-color" content="#110e0c">
+  <meta property="og:title" content="Shan Kebab — Sarlat-la-Canéda">
+  <meta property="og:description" content="Kebabs, tacos, burgers et assiettes, sur place ou à emporter. Noté 4,8/5 sur Google.">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23ff6a13'/><text x='50' y='72' font-size='62' text-anchor='middle' font-family='Arial Black,Arial' font-weight='900' fill='%23110e0c'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Shan Kebab",
+    "servesCuisine": ["Kebab", "Tacos", "Burgers", "Fast-food"],
+    "priceRange": "€",
+    "telephone": "+33553304355",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1 Rue Lucien Dubois",
+      "postalCode": "24200",
+      "addressLocality": "Sarlat-la-Canéda",
+      "addressCountry": "FR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "11:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "11:30", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "17:00", "closes": "22:00" }
+    ],
+    "acceptsReservations": false
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav container" aria-label="Navigation principale">
-      <a href="#accueil" class="logo">✦ Mon site</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+      <a href="#accueil" class="logo" aria-label="Shan Kebab, accueil">
+        <span class="logo-mark">S</span>
+        <span class="logo-text">Shan<span>Kebab</span></span>
+      </a>
+      <ul id="menu-nav" class="nav-links">
+        <li><a href="#carte">La carte</a></li>
+        <li><a href="#horaires">Horaires</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#acces">Accès</a></li>
+      </ul>
+      <a href="tel:+33553304355" class="btn btn-primary btn-sm nav-call">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        05 53 30 43 55
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu-nav" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
       </button>
-      <ul id="menu" class="nav-links">
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projets">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <button class="theme-toggle" aria-label="Changer de thème" title="Changer de thème">
-            <span class="icon-sun">☀︎</span><span class="icon-moon">☾</span>
-          </button>
-        </li>
-      </ul>
     </nav>
   </header>
 
   <main>
+    <!-- ACCUEIL -->
     <section id="accueil" class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">Bonjour, bienvenue 👋</p>
-        <h1>Je crée des choses <span class="accent">simples</span> et <span class="accent">utiles</span>.</h1>
-        <p class="lead">
-          Ceci est mon espace sur le web. Vous y trouverez qui je suis, ce que je fais
-          et les projets sur lesquels je travaille.
-        </p>
-        <div class="hero-actions">
-          <a href="#projets" class="btn btn-primary">Voir mes projets</a>
-          <a href="#contact" class="btn btn-ghost">Me contacter</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="apropos" class="section">
-      <div class="container about">
-        <div class="avatar" aria-hidden="true">✦</div>
-        <div>
-          <h2>À propos</h2>
-          <p>
-            Passionné·e par le numérique, j'aime transformer des idées en réalisations concrètes.
-            Curieux·se de nature, j'apprends en permanence et je prends plaisir à partager
-            ce que je découvre.
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="status-pill" data-status>
+            <span class="dot"></span><span class="status-text">Horaires du jour</span>
           </p>
-          <p>
-            Remplacez ce texte par votre propre présentation : votre parcours, vos centres
-            d'intérêt, ce qui vous motive.
+          <h1>
+            <span class="h1-small">Kebab · Tacos · Burgers</span>
+            Le goût<br>qui fait <em>revenir</em>.
+          </h1>
+          <p class="lead">
+            Viande grillée, frites croustillantes et assiettes généreuses,
+            sur place ou à emporter, au cœur de Sarlat-la-Canéda.
           </p>
-          <ul class="tags">
-            <li>Créativité</li>
-            <li>Rigueur</li>
-            <li>Curiosité</li>
-            <li>Travail d'équipe</li>
+          <div class="hero-actions">
+            <a href="#carte" class="btn btn-primary">Voir la carte</a>
+            <a href="tel:+33553304355" class="btn btn-ghost">Commander par téléphone</a>
+          </div>
+          <ul class="hero-facts">
+            <li>
+              <strong>4,8<small>/5</small></strong>
+              <span><span class="stars" aria-hidden="true">★★★★★</span> 261 avis Google</span>
+            </li>
+            <li>
+              <strong>dès 3&nbsp;€</strong>
+              <span>des prix doux</span>
+            </li>
+            <li>
+              <strong>6j/7</strong>
+              <span>midi & soir</span>
+            </li>
           </ul>
         </div>
-      </div>
-    </section>
 
-    <section id="services" class="section section-alt">
-      <div class="container">
-        <h2>Ce que je propose</h2>
-        <p class="section-intro">Quelques domaines dans lesquels je peux vous aider.</p>
-        <div class="grid">
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">🎨</div>
-            <h3>Design</h3>
-            <p>Des interfaces claires, agréables et accessibles à tous.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">💻</div>
-            <h3>Développement</h3>
-            <p>Des sites web rapides, modernes et adaptés aux mobiles.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon" aria-hidden="true">🚀</div>
-            <h3>Accompagnement</h3>
-            <p>Des conseils pour lancer et faire grandir vos projets.</p>
-          </article>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="plate">
+            <svg class="doner" viewBox="0 0 200 320">
+              <defs>
+                <linearGradient id="meat" x1="0" x2="1">
+                  <stop offset="0" stop-color="#6b2a0c"/>
+                  <stop offset=".35" stop-color="#c2561b"/>
+                  <stop offset=".6" stop-color="#e48a3a"/>
+                  <stop offset="1" stop-color="#7a300e"/>
+                </linearGradient>
+                <linearGradient id="steel" x1="0" x2="1">
+                  <stop offset="0" stop-color="#777"/><stop offset=".5" stop-color="#eee"/><stop offset="1" stop-color="#777"/>
+                </linearGradient>
+              </defs>
+              <rect x="96" y="0" width="8" height="320" rx="4" fill="url(#steel)"/>
+              <path d="M58 40 Q100 22 142 40 L156 250 Q100 282 44 250 Z" fill="url(#meat)"/>
+              <g stroke="#4a1c07" stroke-opacity=".45" stroke-width="3" fill="none">
+                <path d="M56 70 Q100 56 144 70"/>
+                <path d="M53 110 Q100 94 147 110"/>
+                <path d="M50 150 Q100 133 150 150"/>
+                <path d="M48 190 Q100 172 152 190"/>
+                <path d="M46 228 Q100 210 154 228"/>
+              </g>
+              <g fill="#ffc46b" opacity=".55">
+                <ellipse cx="80" cy="90" rx="10" ry="4"/>
+                <ellipse cx="120" cy="130" rx="12" ry="4"/>
+                <ellipse cx="86" cy="175" rx="11" ry="4"/>
+                <ellipse cx="124" cy="212" rx="9" ry="3"/>
+              </g>
+              <ellipse cx="100" cy="300" rx="70" ry="10" fill="#000" opacity=".35"/>
+            </svg>
+          </div>
+          <div class="badge badge-1">🔥 Grillé à la broche</div>
+          <div class="badge badge-2">🥙 Sur place ou à emporter</div>
+          <div class="badge badge-3">♿ Accès PMR</div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Kebab</span><span>Tacos</span><span>Burgers</span><span>Assiettes</span><span>Galettes</span><span>Tenders</span><span>Frites</span>
+          <span>Kebab</span><span>Tacos</span><span>Burgers</span><span>Assiettes</span><span>Galettes</span><span>Tenders</span><span>Frites</span>
         </div>
       </div>
     </section>
 
-    <section id="projets" class="section">
+    <!-- CARTE -->
+    <section id="carte" class="section">
       <div class="container">
-        <h2>Projets</h2>
-        <p class="section-intro">Une sélection de réalisations récentes.</p>
-        <div class="grid">
-          <article class="project">
-            <div class="project-thumb" style="--hue: 250">01</div>
-            <div class="project-body">
-              <h3>Projet Alpha</h3>
-              <p>Une application pour organiser ses idées au quotidien.</p>
-              <a href="#" class="link">En savoir plus →</a>
+        <header class="section-head">
+          <p class="kicker">La carte</p>
+          <h2>Faites-vous plaisir</h2>
+          <p class="section-intro">Sandwichs servis avec frites, au choix en <strong>pain</strong>, <strong>galette</strong> ou <strong>panini</strong>.</p>
+        </header>
+
+        <nav class="menu-tabs" aria-label="Catégories de la carte">
+          <a href="#c-sandwichs" class="active">Sandwichs</a>
+          <a href="#c-assiettes">Assiettes</a>
+          <a href="#c-tacos">Tacos</a>
+          <a href="#c-burgers">Burgers</a>
+          <a href="#c-barquettes">Barquettes</a>
+          <a href="#c-kids">Menu kids</a>
+          <a href="#c-boissons">Boissons</a>
+        </nav>
+
+        <!-- Prix relevés sur la carte affichée en restaurant : à faire valider par l'établissement. -->
+        <div class="menu-grid">
+          <article id="c-sandwichs" class="menu-card featured">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🥙</span>
+              <div>
+                <h3>Sandwichs</h3>
+                <p>Pain, galette ou panini</p>
+              </div>
             </div>
+            <ul class="price-list">
+              <li><span>Kebab</span><b>8,00 €</b></li>
+              <li><span>Kefta</span><b>8,00 €</b></li>
+              <li><span>Poulet</span><b>8,00 €</b></li>
+              <li><span>Américain</span><b>8,00 €</b></li>
+              <li><span>Merguez</span><b>8,00 €</b></li>
+              <li><span>Maxi galette</span><b>14,00 €</b></li>
+            </ul>
           </article>
-          <article class="project">
-            <div class="project-thumb" style="--hue: 170">02</div>
-            <div class="project-body">
-              <h3>Projet Bêta</h3>
-              <p>Un site vitrine pour une association locale.</p>
-              <a href="#" class="link">En savoir plus →</a>
+
+          <article id="c-assiettes" class="menu-card featured">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🍽️</span>
+              <div>
+                <h3>Assiettes</h3>
+                <p>Viande, frites & crudités</p>
+              </div>
             </div>
+            <ul class="price-list">
+              <li><span>Kebab</span><b>13,00 €</b></li>
+              <li><span>Poulet</span><b>13,00 €</b></li>
+              <li><span>Américain</span><b>13,00 €</b></li>
+              <li><span>Merguez</span><b>13,00 €</b></li>
+              <li><span>Feta</span><b>13,00 €</b></li>
+              <li><span>Adana</span><b>14,00 €</b></li>
+              <li><span>Royal</span><b>14,50 €</b></li>
+              <li><span>Mixte</span><b>16,00 €</b></li>
+            </ul>
           </article>
-          <article class="project">
-            <div class="project-thumb" style="--hue: 20">03</div>
-            <div class="project-body">
-              <h3>Projet Gamma</h3>
-              <p>Un petit jeu web réalisé pendant un week-end.</p>
-              <a href="#" class="link">En savoir plus →</a>
+
+          <article id="c-tacos" class="menu-card">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🌯</span>
+              <div>
+                <h3>Tacos</h3>
+                <p>Sauce fromagère, frites</p>
+              </div>
             </div>
+            <ul class="price-list">
+              <li><span>Tacos <small>1 viande</small></span><b>10,00 €</b></li>
+              <li><span>Tacos mixte <small>2 viandes</small></span><b>12,00 €</b></li>
+              <li><span>Maxi tacos <small>1 viande</small></span><b>15,00 €</b></li>
+              <li><span>Maxi tacos mixte <small>2 viandes</small></span><b>17,00 €</b></li>
+            </ul>
           </article>
+
+          <article id="c-burgers" class="menu-card">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🍔</span>
+              <div>
+                <h3>Burgers</h3>
+                <p>Servis avec frites</p>
+              </div>
+            </div>
+            <ul class="price-list">
+              <li><span>Burger</span><b>7,00 €</b></li>
+              <li><span>Chicken burger</span><b>7,00 €</b></li>
+              <li><span>Maxi burger</span><b>9,00 €</b></li>
+              <li><span>Maxi chicken burger</span><b>9,00 €</b></li>
+            </ul>
+          </article>
+
+          <article id="c-barquettes" class="menu-card">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🍟</span>
+              <div>
+                <h3>Barquettes</h3>
+                <p>Pour les petites et grandes faims</p>
+              </div>
+            </div>
+            <ul class="price-list">
+              <li><span>Petite frite</span><b>3,00 €</b></li>
+              <li><span>Grande frite</span><b>4,00 €</b></li>
+              <li><span>Petite viande</span><b>8,00 €</b></li>
+              <li><span>Grande viande</span><b>10,00 €</b></li>
+              <li><span>6 tenders</span><b>8,00 €</b></li>
+              <li><span>9 tenders</span><b>12,00 €</b></li>
+            </ul>
+          </article>
+
+          <article id="c-kids" class="menu-card">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🧒</span>
+              <div>
+                <h3>Menu kids</h3>
+                <p>Avec frites et Capri-Sun</p>
+              </div>
+            </div>
+            <ul class="price-list">
+              <li><span>Viande</span><b>7,00 €</b></li>
+              <li><span>Nuggets</span><b>7,00 €</b></li>
+              <li><span>Tenders</span><b>7,00 €</b></li>
+            </ul>
+          </article>
+
+          <article id="c-boissons" class="menu-card">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">🥤</span>
+              <div>
+                <h3>Boissons</h3>
+                <p>Bien fraîches</p>
+              </div>
+            </div>
+            <ul class="price-list">
+              <li><span>Eau</span><b>2,00 €</b></li>
+              <li><span>Café</span><b>1,50 €</b></li>
+              <li><span>Canette</span><b>2,00 €</b></li>
+              <li><span>Bouteille 50 cl</span><b>2,50 €</b></li>
+              <li><span>Bouteille 1,25 L</span><b>4,00 €</b></li>
+            </ul>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-card-head">
+              <span class="menu-emoji" aria-hidden="true">➕</span>
+              <div>
+                <h3>Suppléments</h3>
+                <p>Pour personnaliser</p>
+              </div>
+            </div>
+            <ul class="price-list">
+              <li><span>Viande</span><b>2,00 €</b></li>
+              <li><span>Fromage</span><b>1,00 €</b></li>
+              <li><span>Royal <small>œuf + fromage</small></span><b>1,50 €</b></li>
+              <li><span>Sans frites</span><b>−0,50 €</b></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="cta-band">
+          <div>
+            <h3>Une petite faim ?</h3>
+            <p>Appelez, commandez, passez récupérer. Simple.</p>
+          </div>
+          <a href="tel:+33553304355" class="btn btn-dark">📞 05 53 30 43 55</a>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section section-alt">
-      <div class="container contact">
-        <div>
-          <h2>Contact</h2>
-          <p class="section-intro">
-            Une question, une idée, un projet ? Écrivez-moi, je réponds rapidement.
+    <!-- HORAIRES -->
+    <section id="horaires" class="section section-alt">
+      <div class="container hours-wrap">
+        <header class="section-head">
+          <p class="kicker">Horaires</p>
+          <h2>Midi & soir,<br>6 jours sur 7</h2>
+          <p class="section-intro">Fermé le lundi. On vous attend le reste de la semaine.</p>
+          <p class="status-pill status-pill-lg" data-status>
+            <span class="dot"></span><span class="status-text">Horaires du jour</span>
           </p>
+        </header>
+
+        <table class="hours">
+          <caption class="sr-only">Horaires d'ouverture</caption>
+          <tbody>
+            <tr data-day="2"><th scope="row">Mardi</th><td>11:00 – 14:00</td><td>17:00 – 22:00</td></tr>
+            <tr data-day="3"><th scope="row">Mercredi</th><td>11:00 – 14:00</td><td>17:00 – 22:00</td></tr>
+            <tr data-day="4"><th scope="row">Jeudi</th><td>11:00 – 14:00</td><td>17:00 – 22:00</td></tr>
+            <tr data-day="5"><th scope="row">Vendredi</th><td>11:00 – 14:00</td><td>17:00 – 22:00</td></tr>
+            <tr data-day="6"><th scope="row">Samedi</th><td>11:30 – 14:00</td><td>17:00 – 22:00</td></tr>
+            <tr data-day="0"><th scope="row">Dimanche</th><td>11:30 – 14:00</td><td>17:00 – 22:00</td></tr>
+            <tr data-day="1" class="closed"><th scope="row">Lundi</th><td colspan="2">Fermé</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- AVIS -->
+    <section id="avis" class="section">
+      <div class="container">
+        <div class="rating-card">
+          <div class="rating-score">
+            <span class="big">4,8</span>
+            <div>
+              <span class="stars stars-lg" aria-label="4,8 étoiles sur 5">★★★★★</span>
+              <p>sur <strong>261 avis</strong> Google</p>
+            </div>
+          </div>
+          <div class="rating-text">
+            <p class="kicker">Ils en parlent</p>
+            <h2>Les Sarladais ont validé.</h2>
+            <p>
+              4,8 sur 5 sur plus de 260 avis : nos clients en parlent mieux que nous.
+              Vous êtes passé nous voir ? Votre avis compte !
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Shan+Kebab+1+Rue+Lucien+Dubois+24200+Sarlat-la-Can%C3%A9da" target="_blank" rel="noopener">Lire les avis</a>
+              <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Shan+Kebab+1+Rue+Lucien+Dubois+24200+Sarlat-la-Can%C3%A9da" target="_blank" rel="noopener">Laisser un avis</a>
+            </div>
+          </div>
         </div>
-        <form class="contact-form" novalidate>
-          <label>
-            Nom
-            <input type="text" name="nom" required autocomplete="name" placeholder="Votre nom">
-          </label>
-          <label>
-            E-mail
-            <input type="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
-          </label>
-          <label>
-            Message
-            <textarea name="message" rows="5" required placeholder="Votre message…"></textarea>
-          </label>
-          <button type="submit" class="btn btn-primary">Envoyer</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
+
+        <ul class="perks">
+          <li><span aria-hidden="true">🔥</span><h3>Viande à la broche</h3><p>Grillée devant vous, tranchée à la commande.</p></li>
+          <li><span aria-hidden="true">💶</span><h3>Prix doux</h3><p>Un repas complet pour moins de 10&nbsp;€.</p></li>
+          <li><span aria-hidden="true">🪑</span><h3>Sur place</h3><p>Une salle accueillante pour manger au chaud.</p></li>
+          <li><span aria-hidden="true">♿</span><h3>Accessible</h3><p>Entrée adaptée aux fauteuils roulants.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACCES -->
+    <section id="acces" class="section section-alt">
+      <div class="container access">
+        <div class="access-info">
+          <p class="kicker">Nous trouver</p>
+          <h2>Passez nous voir</h2>
+          <address>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=1+Rue+Lucien+Dubois+24200+Sarlat-la-Can%C3%A9da" target="_blank" rel="noopener" class="info-row">
+              <span class="info-icon" aria-hidden="true">📍</span>
+              <span><strong>1 Rue Lucien Dubois</strong><br>24200 Sarlat-la-Canéda</span>
+            </a>
+            <a href="tel:+33553304355" class="info-row">
+              <span class="info-icon" aria-hidden="true">📞</span>
+              <span><strong>05 53 30 43 55</strong><br>Commande par téléphone</span>
+            </a>
+          </address>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=1+Rue+Lucien+Dubois+24200+Sarlat-la-Can%C3%A9da" target="_blank" rel="noopener">Itinéraire</a>
+            <a class="btn btn-ghost" href="tel:+33553304355">Appeler</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe
+            title="Plan d'accès à Shan Kebab"
+            src="https://www.google.com/maps?q=Shan+Kebab,+1+Rue+Lucien+Dubois,+24200+Sarlat-la-Can%C3%A9da&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="annee"></span> Mon site — Fait avec ♥</p>
-      <a href="#accueil" class="link">Retour en haut ↑</a>
+    <div class="container footer-grid">
+      <div>
+        <a href="#accueil" class="logo">
+          <span class="logo-mark">S</span>
+          <span class="logo-text">Shan<span>Kebab</span></span>
+        </a>
+        <p>Kebab, tacos, burgers & assiettes<br>à Sarlat-la-Canéda.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>1 Rue Lucien Dubois<br>24200 Sarlat-la-Canéda<br><a href="tel:+33553304355">05 53 30 43 55</a></p>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <p>Mar → Dim : midi & soir<br>Lundi : fermé</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="annee"></span> Shan Kebab · Tous droits réservés</p>
+      <a href="#accueil">Retour en haut ↑</a>
     </div>
   </footer>
+
+  <!-- Barre d'action mobile -->
+  <div class="mobile-bar">
+    <a href="tel:+33553304355" class="btn btn-primary">📞 Appeler</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=1+Rue+Lucien+Dubois+24200+Sarlat-la-Can%C3%A9da" target="_blank" rel="noopener" class="btn btn-ghost">📍 Itinéraire</a>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -1,37 +1,42 @@
-# Mon-site
+# Shan Kebab — site web (maquette)
 
-Un site vitrine personnel, simple et responsive, en HTML, CSS et JavaScript (sans dépendance).
+Proposition de site vitrine pour **Shan Kebab**, 1 Rue Lucien Dubois, 24200 Sarlat-la-Canéda.
+Site statique en HTML, CSS et JavaScript, sans dépendance ni serveur.
 
 ## Contenu
 
-- **Accueil** : présentation et boutons d'action
-- **À propos** : courte biographie et qualités
-- **Services** : ce que vous proposez
-- **Projets** : une galerie de réalisations
-- **Contact** : formulaire avec validation
+- **Accueil** : accroche, note Google (4,8/5, 261 avis) et badge « Ouvert / Fermé » calculé en direct à l'heure de Paris
+- **La carte** : sandwichs, assiettes, tacos, burgers, barquettes, menu kids, boissons, suppléments
+- **Horaires** : le jour en cours est mis en évidence
+- **Avis** : lien vers la fiche Google pour lire ou laisser un avis
+- **Accès** : adresse, plan Google Maps, bouton itinéraire
+- Sur mobile : barre fixe « Appeler / Itinéraire » toujours visible
+- Référencement local : balises meta et données structurées `Restaurant` (schema.org)
 
-Fonctionnalités : thème clair/sombre (mémorisé), menu mobile, animations au défilement,
-respect de `prefers-reduced-motion`.
+## À valider avec le restaurant avant la mise en ligne
+
+- **Les prix** ont été relevés sur une photo de la carte affichée au comptoir : à vérifier un par un.
+- **Les textes** d'accroche (« viande à la broche », « salle accueillante »…) sont à confirmer.
+- **Les photos** : le site n'utilise aucune image tierce. Ajoutez de vraies photos du restaurant
+  et des plats, prises par vous ou fournies par le gérant (pas celles des avis Google).
+- **Les mentions légales** (obligatoires en France) : nom de l'exploitant, SIRET, hébergeur.
+- **L'accord du gérant** pour publier un site à son nom.
 
 ## Voir le site en local
-
-Ouvrez simplement `index.html` dans votre navigateur, ou lancez un petit serveur :
 
 ```bash
 python3 -m http.server 8000
 ```
 
-puis rendez-vous sur <http://localhost:8000>.
+puis ouvrez <http://localhost:8000>.
 
-## Mettre le site en ligne (GitHub Pages)
+## Mise en ligne
 
-1. Sur GitHub, ouvrez **Settings → Pages**.
-2. Dans **Source**, choisissez la branche à publier et le dossier `/ (root)`.
-3. Le site sera disponible à l'adresse `https://<votre-utilisateur>.github.io/Mon-site/`.
+Gratuitement avec GitHub Pages (**Settings → Pages**), Netlify ou Vercel. Un nom de domaine
+(ex. `shan-kebab-sarlat.fr`, environ 10 €/an) peut ensuite y être relié.
 
-## Personnaliser
+## Modifier
 
-- Les textes se trouvent dans `index.html`.
-- Les couleurs sont définies en haut de `style.css` (variables `--primary`, `--accent`, etc.).
-- Le formulaire de contact n'envoie rien pour l'instant : pour recevoir les messages,
-  branchez-le à un service comme [Formspree](https://formspree.io).
+- Textes et prix : `index.html` (section `#carte`)
+- Horaires : `index.html` (section `#horaires`) **et** l'objet `HOURS` dans `script.js`
+- Couleurs : variables en haut de `style.css`
